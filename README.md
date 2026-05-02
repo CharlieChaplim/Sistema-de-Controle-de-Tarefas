@@ -36,7 +36,7 @@ O projeto funciona em memória, sem backend, e permite cadastrar, listar, editar
 1. Clone o repositório:
 
 ```bash
-git clone LINK_DO_REPOSITORIO
+git clone https://github.com/CharlieChaplim/Sistema-de-Controle-de-Tarefas.git
 ```
 
 2. Entre na pasta do projeto:
