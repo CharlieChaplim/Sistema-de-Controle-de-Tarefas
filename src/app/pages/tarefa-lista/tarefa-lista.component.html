@@ -1,0 +1,85 @@
+<section class="lista">
+  <div class="cabecalho">
+    <div>
+      <h2>Lista de Tarefas</h2>
+      <p>Visualize, filtre, edite, conclua ou exclua suas tarefas.</p>
+    </div>
+
+    <a routerLink="/tarefa/nova">Nova Tarefa</a>
+  </div>
+
+  <div class="filtros">
+    <label>
+      Busca
+      <input type="text" [(ngModel)]="termoBusca" placeholder="Título ou descrição">
+    </label>
+
+    <label>
+      Categoria
+      <select [(ngModel)]="filtroCategoria">
+        <option>Todas</option>
+        <option *ngFor="let categoria of categorias">{{ categoria }}</option>
+      </select>
+    </label>
+
+    <label>
+      Prioridade
+      <select [(ngModel)]="filtroPrioridade">
+        <option>Todas</option>
+        <option *ngFor="let prioridade of prioridades">{{ prioridade }}</option>
+      </select>
+    </label>
+
+    <label>
+      Status
+      <select [(ngModel)]="filtroStatus">
+        <option>Todas</option>
+        <option>Pendentes</option>
+        <option>Concluídas</option>
+      </select>
+    </label>
+  </div>
+
+  <p *ngIf="tarefasFiltradas.length === 0" class="vazio">
+    Nenhuma tarefa encontrada.
+  </p>
+
+  <div class="tarefas">
+    <article
+      class="tarefa-card"
+      *ngFor="let tarefa of tarefasFiltradas"
+      [class.concluida]="tarefa.concluida"
+    >
+      <div class="linha-topo">
+        <label class="checkbox">
+          <input
+            type="checkbox"
+            [checked]="tarefa.concluida"
+            (change)="alternarConclusao(tarefa.id)"
+          >
+          Concluída
+        </label>
+
+        <span class="prioridade" [ngClass]="tarefa.prioridade.toLowerCase()">
+          {{ tarefa.prioridade }}
+        </span>
+      </div>
+
+      <h3>{{ tarefa.titulo }}</h3>
+      <p>{{ tarefa.descricao || 'Sem descrição.' }}</p>
+
+      <div class="detalhes">
+        <span>Categoria: {{ tarefa.categoria }}</span>
+        <span>Criada em: {{ tarefa.dataCriacao | date:'dd/MM/yyyy' }}</span>
+        <span *ngIf="tarefa.dataConclusao">
+          Concluída em: {{ tarefa.dataConclusao | date:'dd/MM/yyyy' }}
+        </span>
+      </div>
+
+      <div class="acoes-card">
+        <a [routerLink]="['/tarefa/editar', tarefa.id]">Editar</a>
+        <button type="button" (click)="excluir(tarefa.id)">Excluir</button>
+      </div>
+    </article>
+  </div>
+</section>

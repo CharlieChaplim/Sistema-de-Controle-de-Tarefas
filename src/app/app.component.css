@@ -1,0 +1,35 @@
+.topo {
+  background-color: #20232a;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.topo h1 {
+  margin: 0 0 15px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  background-color: #3f51b5;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+nav a:hover {
+  background-color: #5c6bc0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 16px;
+}

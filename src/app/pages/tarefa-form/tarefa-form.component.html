@@ -1,0 +1,53 @@
+<section class="formulario">
+  <h2>{{ modoEdicao ? 'Editar Tarefa' : 'Nova Tarefa' }}</h2>
+  <p>Preencha os campos abaixo para salvar a tarefa.</p>
+
+  <form [formGroup]="formulario" (ngSubmit)="salvar()">
+    <label>
+      Título
+      <input type="text" formControlName="titulo" placeholder="Digite o título da tarefa">
+    </label>
+
+    <small *ngIf="campoInvalido('titulo')">
+      O título é obrigatório e deve ter pelo menos 3 caracteres.
+    </small>
+
+    <label>
+      Descrição
+      <textarea formControlName="descricao" rows="4" placeholder="Digite uma descrição opcional"></textarea>
+    </label>
+
+    <label>
+      Categoria
+      <select formControlName="categoria">
+        <option value="">Selecione uma categoria</option>
+        <option *ngFor="let categoria of categorias" [value]="categoria">
+          {{ categoria }}
+        </option>
+      </select>
+    </label>
+
+    <small *ngIf="campoInvalido('categoria')">
+      A categoria é obrigatória.
+    </small>
+
+    <label>
+      Prioridade
+      <select formControlName="prioridade">
+        <option value="">Selecione uma prioridade</option>
+        <option *ngFor="let prioridade of prioridades" [value]="prioridade">
+          {{ prioridade }}
+        </option>
+      </select>
+    </label>
+
+    <small *ngIf="campoInvalido('prioridade')">
+      A prioridade é obrigatória.
+    </small>
+
+    <div class="acoes">
+      <button type="submit">Salvar</button>
+      <a routerLink="/tarefas">Cancelar</a>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,45 @@
+<section class="dashboard">
+  <h2>Dashboard</h2>
+  <p>Resumo geral das suas tarefas cadastradas.</p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>Total de tarefas</h3>
+      <strong>{{ totalTarefas }}</strong>
+    </div>
+
+    <div class="card">
+      <h3>Pendentes</h3>
+      <strong>{{ tarefasPendentes }}</strong>
+    </div>
+
+    <div class="card">
+      <h3>Concluídas</h3>
+      <strong>{{ tarefasConcluidas }}</strong>
+    </div>
+  </div>
+
+  <h3 class="subtitulo">Tarefas por prioridade</h3>
+
+  <div class="cards">
+    <div class="card prioridade alta">
+      <h3>Alta</h3>
+      <strong>{{ tarefasAlta }}</strong>
+    </div>
+
+    <div class="card prioridade media">
+      <h3>Média</h3>
+      <strong>{{ tarefasMedia }}</strong>
+    </div>
+
+    <div class="card prioridade baixa">
+      <h3>Baixa</h3>
+      <strong>{{ tarefasBaixa }}</strong>
+    </div>
+  </div>
+
+  <div class="acoes">
+    <a routerLink="/tarefa/nova">Nova Tarefa</a>
+    <a routerLink="/tarefas">Ver Todas</a>
+  </div>
+</section>
